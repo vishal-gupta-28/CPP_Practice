@@ -4,39 +4,36 @@ using namespace std;
 
 int main() {
     int totalRows; 
-    if (!(cin >> totalRows)) return 0;
-    if (totalRows <= 0) return 0;
+    if (!(cin >> totalRows)) {
+        cout << "This input is not valid. Please enter a valid positive integer.\n";
+        return 0;
+    }
 
-
-
-    int middleRow = (totalRows + 1) / 2; 
+    if (totalRows <= 0) {
+        cout << "This input is not valid. Please enter a valid positive integer.\n";
+        return 0;
+    }
 
     for (int currentRow = 1; currentRow <= totalRows; ++currentRow) {
-        
-       
-        int patternLength = middleRow - abs(currentRow - middleRow);
-        if (patternLength < 1) patternLength = 1; 
+        int patternWidth = min(currentRow, totalRows - currentRow + 1);
 
-        // Left side
-        for (int leftIndex = 1; leftIndex <= patternLength; ++leftIndex) {
+        for (int leftIndex = 1; leftIndex <= patternWidth; ++leftIndex) {
             cout << (leftIndex % 2 ? '1' : '0');
-            if (leftIndex < patternLength) cout << ' ';
+            if (leftIndex < patternWidth) cout << ' ';
         }
 
-        // Gap calculation
-        int gapCount = totalRows - 2 * patternLength + 1;
+        int gapCount = totalRows - 2 * patternWidth + 1;
         if (gapCount > 0) {
             cout << string(2 * gapCount - 1, ' ');
         }
 
-        // Right side
         int rightStartIndex = (gapCount == 0 ? 2 : 1);
-        bool isFirstRightElement = true;
+        bool isFirstRightPrinted = true;
 
-        for (int rightIndex = rightStartIndex; rightIndex <= patternLength; ++rightIndex) {
-            if (!(gapCount > 0 && isFirstRightElement)) cout << ' ';
+        for (int rightIndex = rightStartIndex; rightIndex <= patternWidth; ++rightIndex) {
+            if (!(gapCount > 0 && isFirstRightPrinted)) cout << ' ';
             cout << (rightIndex % 2 ? '1' : '0');
-            isFirstRightElement = false;
+            isFirstRightPrinted = false;
         }
 
         cout << '\n';
