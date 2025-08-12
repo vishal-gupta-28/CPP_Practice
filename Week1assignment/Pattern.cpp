@@ -1,10 +1,13 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 int main() {
     int totalRows; 
     if (!(cin >> totalRows)) return 0;
     if (totalRows <= 0) return 0;
+
+
 
     int middleRow = (totalRows + 1) / 2; 
 

@@ -10,6 +10,7 @@ double toDouble(const string& str) {
     int sign = 1;
     bool decimalPoint = false;
     double divisor = 10.0;
+    char strv[] = "pranav";
 
     while (position < length && str[position] == ' ') {
         position++;
