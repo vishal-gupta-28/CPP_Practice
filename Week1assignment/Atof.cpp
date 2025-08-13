@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-double toDouble(const string& str) {
+double myfunction(const string& str) {  
     int position = 0;
     int length = static_cast<int>(str.length());
 
@@ -55,12 +55,28 @@ double toDouble(const string& str) {
 }
 
 int main() {
-    string input;
-    cout << "Enter a number string: ";
-    cin >> input;
+    char choice;
+    do {
+        string input;
+        cout << "Enter a number string: ";
+        cin >> input;
 
-    double value = toDouble(input);
-    cout << "Converted float: " << value << endl;
+        double value = myfunction(input);
+        cout << "Converted float: " << value << endl;
+
+        
+        while (true) {
+            cout << "Do you want to run the program again (y/n): ";
+            cin >> choice;
+
+            if (choice == 'y' || choice == 'n') {
+                break;
+            } else {
+                cout << "Please enter valid input" << endl;
+            }
+        }
+
+    } while (choice == 'y');
 
     return 0;
 }
